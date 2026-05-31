@@ -2,33 +2,26 @@ package com.mobilecomputing.fitnessapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_register)
 
-        val startButton =
-            findViewById<Button>(R.id.startButton)
+        val back = findViewById<TextView>(R.id.backToLogin)
 
-        val loginText =
-            findViewById<TextView>(R.id.loginText)
+        val loginText = findViewById<TextView>(R.id.loginText)
 
-        startButton.setOnClickListener {
-
-            startActivity(
-                Intent(
-                    this,
-                    LoginActivity::class.java
-                )
-            )
+        // Back to Login
+        back.setOnClickListener {
+            finish()
         }
 
+        // Already have an account? Login
         loginText.setOnClickListener {
 
             startActivity(
@@ -37,6 +30,8 @@ class MainActivity : AppCompatActivity() {
                     LoginActivity::class.java
                 )
             )
+
+            finish()
         }
     }
 }

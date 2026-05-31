@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">FitnessApp</string>
+
+    <string name="app_name">Fitness App</string>
+
+    <string name="my_page">My Page</string>
+    <string name="edit">Edit</string>
+    <string name="user_name">User Name</string>
+
+    <string name="height">0 cm</string>
+    <string name="weight">0 kg</string>
+    <string name="birthday">9 Feb 1990</string>
+
+    <string name="profile_image_desc">Profile Image</string>
+
 </resources>
