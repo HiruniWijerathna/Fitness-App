@@ -11,6 +11,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val prefs = getSharedPreferences("fitness_app_prefs", MODE_PRIVATE)
+        if (prefs.getBoolean("is_logged_in", false)) {
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+            return
+        }
+
         setContentView(R.layout.activity_main)
 
         val startButton =
@@ -24,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(
                 Intent(
                     this,
-                    LoginActivity::class.java
+                    RegisterActivity::class.java
                 )
             )
         }

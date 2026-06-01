@@ -20,6 +20,20 @@ class ProfileActivity : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             uri?.let {
                 profileImage.setImageURI(it)
+                try {
+                    val inputStream = contentResolver.openInputStream(it)
+                    val file = java.io.File(filesDir, "profile_pic.jpg")
+                    val outputStream = java.io.FileOutputStream(file)
+                    inputStream?.copyTo(outputStream)
+                    inputStream?.close()
+                    outputStream.close()
+                    getSharedPreferences(HomeActivity.PREFS_NAME, MODE_PRIVATE)
+                        .edit()
+                        .putString("profile_image_uri", file.absolutePath)
+                        .apply()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
             }
         }
 
@@ -29,6 +43,18 @@ class ProfileActivity : AppCompatActivity() {
 
         profileImage = findViewById(R.id.profileImage)
         txtName = findViewById(R.id.txtName)
+
+        val prefs = getSharedPreferences(HomeActivity.PREFS_NAME, MODE_PRIVATE)
+        val savedName = prefs.getString("profile_name", null)
+        if (savedName != null) {
+            txtName.text = savedName
+        }
+        val savedUri = prefs.getString("profile_image_uri", null)
+        if (savedUri != null) {
+            try {
+                profileImage.setImageURI(android.net.Uri.parse(savedUri))
+            } catch (e: Exception) {}
+        }
 
         val imgSitting = findViewById<ImageView>(R.id.imgSitting)
         val imgWalk = findViewById<ImageView>(R.id.imgWalk)
@@ -48,6 +74,14 @@ class ProfileActivity : AppCompatActivity() {
         txtWeight.setTextColor(Color.WHITE)
         txtBirthday.setTextColor(Color.WHITE)
         txtName.setTextColor(Color.WHITE)
+
+        val savedHeight = prefs.getString("profile_height", "170.0 cm")
+        val savedWeight = prefs.getString("profile_weight", "70.0 kg")
+        val savedBirthday = prefs.getString("profile_birthday", "23 May 1990")
+
+        txtHeight.text = savedHeight
+        txtWeight.text = savedWeight
+        txtBirthday.text = savedBirthday
 
         profileImage.setOnClickListener {
             imagePicker.launch("image/*")
@@ -89,6 +123,11 @@ class ProfileActivity : AppCompatActivity() {
 
                 if (newName.isNotEmpty()) {
                     txtName.text = newName
+                    // Save to SharedPreferences so HomeActivity shows it as greeting
+                    getSharedPreferences(HomeActivity.PREFS_NAME, MODE_PRIVATE)
+                        .edit()
+                        .putString("profile_name", newName)
+                        .apply()
                 }
 
                 dialog.dismiss()
@@ -110,44 +149,40 @@ class ProfileActivity : AppCompatActivity() {
             imgExercise.setBackgroundResource(R.drawable.activity_circle)
         }
 
-        // default selected = Sitting
-        resetActivityIcons()
-        imgSitting.setBackgroundResource(R.drawable.activity_circle_selected)
-
-        txtActivityTitle.text = "Sedentary"
-        txtActivityDesc.text = "Typical daily activities"
-
-        imgSitting.setOnClickListener {
+        fun updateActiveLevel(level: Int) {
             resetActivityIcons()
-            imgSitting.setBackgroundResource(R.drawable.activity_circle_selected)
-
-            txtActivityTitle.text = "Sedentary"
-            txtActivityDesc.text = "Typical daily activities"
+            prefs.edit().putInt("profile_active_level", level).apply()
+            when (level) {
+                0 -> {
+                    imgSitting.setBackgroundResource(R.drawable.activity_circle_selected)
+                    txtActivityTitle.text = "Sedentary"
+                    txtActivityDesc.text = "Typical daily activities"
+                }
+                1 -> {
+                    imgWalk.setBackgroundResource(R.drawable.activity_circle_selected)
+                    txtActivityTitle.text = "Somewhat Active"
+                    txtActivityDesc.text = "Typical daily activities and 30-60 minutes of daily moderate activity (for example, walking at 5-7km/h)"
+                }
+                2 -> {
+                    imgRun.setBackgroundResource(R.drawable.activity_circle_selected)
+                    txtActivityTitle.text = "Active"
+                    txtActivityDesc.text = "Typical daily activities plus at least 60 minutes of daily moderate activity"
+                }
+                3 -> {
+                    imgExercise.setBackgroundResource(R.drawable.activity_circle_selected)
+                    txtActivityTitle.text = "Very Active"
+                    txtActivityDesc.text = "Typical daily activities plus at least 150 minutes of daily moderate activity and 60 minutes of vigorous activity or add 120 minutes of moderate activity to your daily activities"
+                }
+            }
         }
 
-        imgWalk.setOnClickListener {
-            resetActivityIcons()
-            imgWalk.setBackgroundResource(R.drawable.activity_circle_selected)
+        val savedActiveLevel = prefs.getInt("profile_active_level", 0)
+        updateActiveLevel(savedActiveLevel)
 
-            txtActivityTitle.text = "Somewhat Active"
-            txtActivityDesc.text = "Typical daily activities and 30-60 minutes of daily moderate activity (for example, walking at 5-7km/h)"
-        }
-
-        imgRun.setOnClickListener {
-            resetActivityIcons()
-            imgRun.setBackgroundResource(R.drawable.activity_circle_selected)
-
-            txtActivityTitle.text = "Active"
-            txtActivityDesc.text = "Typical daily activities plus at least 60 minutes of daily moderate activity"
-        }
-
-        imgExercise.setOnClickListener {
-            resetActivityIcons()
-            imgExercise.setBackgroundResource(R.drawable.activity_circle_selected)
-
-            txtActivityTitle.text = "Very Active"
-            txtActivityDesc.text = "Typical daily activities plus at least 150 minutes of daily moderate activity and 60 minutes of vigorous activity or add 120 minutes of moderate activity to your daily activities"
-        }
+        imgSitting.setOnClickListener { updateActiveLevel(0) }
+        imgWalk.setOnClickListener { updateActiveLevel(1) }
+        imgRun.setOnClickListener { updateActiveLevel(2) }
+        imgExercise.setOnClickListener { updateActiveLevel(3) }
 
         // HEIGHT PICKER
         txtHeight.setOnClickListener {
@@ -158,13 +193,16 @@ class ProfileActivity : AppCompatActivity() {
             val btnDone = view.findViewById<TextView>(R.id.btnDone)
             val btnCancel = view.findViewById<TextView>(R.id.btnCancel)
 
+            val currentHeightStr = txtHeight.text.toString().replace(" cm", "")
+            val heightParts = currentHeightStr.split(".")
+
             pickerCm.minValue = 20
             pickerCm.maxValue = 300
-            pickerCm.value = 170
+            pickerCm.value = heightParts.getOrNull(0)?.toIntOrNull() ?: 170
 
             pickerDecimal.minValue = 0
             pickerDecimal.maxValue = 9
-            pickerDecimal.value = 0
+            pickerDecimal.value = heightParts.getOrNull(1)?.toIntOrNull() ?: 0
 
             val dialog = AlertDialog.Builder(this)
                 .setView(view)
@@ -177,7 +215,9 @@ class ProfileActivity : AppCompatActivity() {
             setNumberPickerTextColor(pickerDecimal, Color.WHITE)
 
             btnDone.setOnClickListener {
-                txtHeight.text = "${pickerCm.value}.${pickerDecimal.value} cm"
+                val newHeight = "${pickerCm.value}.${pickerDecimal.value} cm"
+                txtHeight.text = newHeight
+                prefs.edit().putString("profile_height", newHeight).apply()
                 dialog.dismiss()
             }
 
@@ -195,13 +235,16 @@ class ProfileActivity : AppCompatActivity() {
             val btnDone = view.findViewById<TextView>(R.id.btnDone)
             val btnCancel = view.findViewById<TextView>(R.id.btnCancel)
 
+            val currentWeightStr = txtWeight.text.toString().replace(" kg", "")
+            val weightParts = currentWeightStr.split(".")
+
             pickerKg.minValue = 10
             pickerKg.maxValue = 300
-            pickerKg.value = 70
+            pickerKg.value = weightParts.getOrNull(0)?.toIntOrNull() ?: 70
 
             pickerDecimal.minValue = 0
             pickerDecimal.maxValue = 9
-            pickerDecimal.value = 0
+            pickerDecimal.value = weightParts.getOrNull(1)?.toIntOrNull() ?: 0
 
             val dialog = AlertDialog.Builder(this)
                 .setView(view)
@@ -214,7 +257,9 @@ class ProfileActivity : AppCompatActivity() {
             setNumberPickerTextColor(pickerDecimal, Color.WHITE)
 
             btnDone.setOnClickListener {
-                txtWeight.text = "${pickerKg.value}.${pickerDecimal.value} kg"
+                val newWeight = "${pickerKg.value}.${pickerDecimal.value} kg"
+                txtWeight.text = newWeight
+                prefs.edit().putString("profile_weight", newWeight).apply()
                 dialog.dismiss()
             }
 
@@ -252,8 +297,10 @@ class ProfileActivity : AppCompatActivity() {
                     "Jan","Feb","Mar","Apr","May","Jun",
                     "Jul","Aug","Sep","Oct","Nov","Dec"
                 )
-
-                txtBirthday.text = "$day ${months[month]} $year"
+                
+                val newBirthday = "$day ${months[month]} $year"
+                txtBirthday.text = newBirthday
+                prefs.edit().putString("profile_birthday", newBirthday).apply()
                 dialog.dismiss()
             }
 

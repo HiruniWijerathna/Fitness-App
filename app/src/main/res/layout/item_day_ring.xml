@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dayRoot"
+    android:layout_width="56dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:paddingVertical="8dp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtDayLetter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="M"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <FrameLayout
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="6dp">
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/ringOuterMini"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_gravity="center"
+            android:progress="0"
+            app:indicatorColor="#15BDD7"
+            app:indicatorSize="44dp"
+            app:trackColor="#2215BDD7"
+            app:trackThickness="4dp" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/ringMiddleMini"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:progress="0"
+            app:indicatorColor="#4CAF50"
+            app:indicatorSize="32dp"
+            app:trackColor="#224CAF50"
+            app:trackThickness="4dp" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/ringInnerMini"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:progress="0"
+            app:indicatorColor="#FF9800"
+            app:indicatorSize="20dp"
+            app:trackColor="#22FF9800"
+            app:trackThickness="4dp" />
+            
+    </FrameLayout>
+</LinearLayout>

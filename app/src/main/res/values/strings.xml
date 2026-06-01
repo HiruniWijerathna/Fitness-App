@@ -13,4 +13,27 @@
 
     <string name="profile_image_desc">Profile Image</string>
 
+    <!-- Home -->
+    <string name="daily_balance">Your daily Balance</string>
+    <string name="sleep">Sleep</string>
+    <string name="food">Food</string>
+    <string name="body_comp">Body comp.</string>
+    <string name="blood_press">Blood press.</string>
+    <string name="steps">Steps</string>
+
+    <!-- Workout -->
+    <string name="popular_workout">Popular Workout</string>
+    <string name="program_type">Program Type</string>
+    <string name="full_body">Full Body</string>
+    <string name="arms_upper">Arms Upper Body</string>
+    <string name="yoga">Yoga</string>
+
+    <!-- Achievement -->
+    <string name="achievement">Achievement</string>
+    <string name="badges">Badges</string>
+    <string name="personal_best">Personal best</string>
+
+    <!-- Daily Activity -->
+    <string name="daily_activity">Daily activity</string>
+
 </resources>

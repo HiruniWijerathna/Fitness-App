@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitnessApp">
+        <activity
+            android:name=".StartWorkoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WorkoutDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DailyActivityActivity"
+            android:exported="false" />
         <activity
             android:name=".WorkoutActivity"
             android:exported="false" />
@@ -38,7 +48,6 @@
             android:theme="@style/Theme.FitnessApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
