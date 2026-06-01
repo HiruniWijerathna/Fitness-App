@@ -1,280 +1,301 @@
-<!--<?xml version="1.0" encoding="utf-8"?>-->
+<?xml version="1.0" encoding="utf-8"?>
 
-<!--<androidx.constraintlayout.widget.ConstraintLayout-->
-<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:paddingBottom="45dp">-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
-<!--    &lt;!&ndash; Background &ndash;&gt;-->
-<!--    <ImageView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:contentDescription="@null"-->
-<!--        android:scaleType="centerCrop"-->
-<!--        android:src="@drawable/background2" />-->
+    <!-- Background -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background2" />
 
-<!--    &lt;!&ndash; Title &ndash;&gt;-->
-<!--    <TextView-->
-<!--        android:id="@+id/title"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="40dp"-->
-<!--        android:layout_marginTop="40dp"-->
-<!--        android:text="@string/my_page"-->
-<!--        android:textColor="#FFFFFF"-->
-<!--        android:textSize="24sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-<!--    &lt;!&ndash; Profile Card &ndash;&gt;-->
-<!--    <com.google.android.material.card.MaterialCardView-->
-<!--        android:id="@+id/profileCard"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="130dp"-->
-<!--        android:layout_marginHorizontal="20dp"-->
-<!--        android:layout_marginTop="70dp"-->
-<!--        app:cardBackgroundColor="#991B7999"-->
-<!--        app:cardCornerRadius="20dp"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/title"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent">-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent">-->
 
-<!--            &lt;!&ndash; Edit Button &ndash;&gt;-->
-<!--            <androidx.appcompat.widget.AppCompatButton-->
-<!--                android:id="@+id/btnEdit"-->
-<!--                android:layout_width="80dp"-->
-<!--                android:layout_height="40dp"-->
-<!--                android:layout_alignParentEnd="true"-->
-<!--                android:layout_margin="12dp"-->
-<!--                android:background="@drawable/rounded_button"-->
-<!--                android:backgroundTint="@null"-->
-<!--                android:text="@string/edit"-->
-<!--                android:textColor="#FFFFFF" />-->
 
-<!--            &lt;!&ndash; Username &ndash;&gt;-->
-<!--            <TextView-->
-<!--                android:id="@+id/txtName"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerHorizontal="true"-->
-<!--                android:layout_marginTop="75dp"-->
-<!--                android:text="@string/user_name"-->
-<!--                android:textColor="#FFFFFF"-->
-<!--                android:textSize="20sp"-->
-<!--                android:textStyle="bold" />-->
+    <!-- Title -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/my_page"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<!--        </RelativeLayout>-->
+    <!-- Profile Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/profileCard"
+        android:layout_width="0dp"
+        android:layout_height="130dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="70dp"
+        app:cardBackgroundColor="#991B7999"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-<!--    </com.google.android.material.card.MaterialCardView>-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-<!--    &lt;!&ndash; Floating Profile Image &ndash;&gt;-->
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:id="@+id/profileImageContainer"-->
-<!--        android:layout_width="110dp"-->
-<!--        android:layout_height="110dp"-->
-<!--        android:translationY="-55dp"-->
-<!--        app:cardCornerRadius="55dp"-->
-<!--        app:cardElevation="8dp"-->
-<!--        app:layout_constraintTop_toTopOf="@id/profileCard"-->
-<!--        app:layout_constraintStart_toStartOf="@id/profileCard"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/profileCard">-->
+            <!-- Edit Button -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnEdit"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="12dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@null"
+                android:text="@string/edit"
+                android:textColor="#FFFFFF" />
 
-<!--        <ImageView-->
-<!--            android:id="@+id/profileImage"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:background="#000000"-->
-<!--            android:scaleType="centerCrop"-->
-<!--            android:src="@drawable/vector" />-->
+            <!-- Username -->
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="75dp"
+                android:text="@string/user_name"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-<!--    </androidx.cardview.widget.CardView>-->
+        </RelativeLayout>
 
-<!--    &lt;!&ndash; Info Card &ndash;&gt;-->
-<!--    <com.google.android.material.card.MaterialCardView-->
-<!--        android:id="@+id/infoCard"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="180dp"-->
-<!--        android:layout_marginHorizontal="20dp"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        app:cardBackgroundColor="#991B7999"-->
-<!--        app:cardCornerRadius="20dp"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/profileCard"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent">-->
+    </com.google.android.material.card.MaterialCardView>
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:orientation="vertical"-->
-<!--            android:padding="20dp">-->
+    <!-- Floating Profile Image -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profileImageContainer"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:translationY="-55dp"
+        app:cardCornerRadius="55dp"
+        app:cardElevation="8dp"
+        app:layout_constraintTop_toTopOf="@id/profileCard"
+        app:layout_constraintStart_toStartOf="@id/profileCard"
+        app:layout_constraintEnd_toEndOf="@id/profileCard">
 
-<!--            <TextView-->
-<!--                android:id="@+id/txtHeight"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:drawablePadding="12dp"-->
-<!--                android:gravity="center_vertical"-->
-<!--                android:text="@string/height"-->
-<!--                android:textColor="#FFFFFF"-->
-<!--                android:textSize="18sp"-->
-<!--                app:drawableStartCompat="@drawable/heights" />-->
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#000000"
+            android:scaleType="centerCrop"
+            android:src="@drawable/vector" />
 
-<!--            <View-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="1dp"-->
-<!--                android:layout_marginVertical="15dp"-->
-<!--                android:background="#80FFFFFF" />-->
+    </androidx.cardview.widget.CardView>
 
-<!--            <TextView-->
-<!--                android:id="@+id/txtWeight"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:drawablePadding="12dp"-->
-<!--                android:gravity="center_vertical"-->
-<!--                android:text="@string/weight"-->
-<!--                android:textColor="#FFFFFF"-->
-<!--                android:textSize="18sp"-->
-<!--                app:drawableStartCompat="@drawable/scale" />-->
+    <!-- Info Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/infoCard"
+        android:layout_width="0dp"
+        android:layout_height="180dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="#991B7999"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintTop_toBottomOf="@id/profileCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-<!--            <View-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="1dp"-->
-<!--                android:layout_marginVertical="15dp"-->
-<!--                android:background="#80FFFFFF" />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
 
-<!--            <TextView-->
-<!--                android:id="@+id/txtBirthday"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:drawablePadding="12dp"-->
-<!--                android:gravity="center_vertical"-->
-<!--                android:text="@string/birthday"-->
-<!--                android:textColor="#FFFFFF"-->
-<!--                android:textSize="18sp"-->
-<!--                app:drawableStartCompat="@drawable/birthday" />-->
+            <TextView
+                android:id="@+id/txtHeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:text="@string/height"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:drawableStartCompat="@drawable/heights" />
 
-<!--        </LinearLayout>-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="15dp"
+                android:background="#80FFFFFF" />
 
-<!--    </com.google.android.material.card.MaterialCardView>-->
+            <TextView
+                android:id="@+id/txtWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:text="@string/weight"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:drawableStartCompat="@drawable/scale" />
 
-<!--    &lt;!&ndash; Activity Level Card &ndash;&gt;-->
-<!--    <com.google.android.material.card.MaterialCardView-->
-<!--        android:id="@+id/activityCard"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginHorizontal="20dp"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        app:cardBackgroundColor="#991B7999"-->
-<!--        app:cardCornerRadius="20dp"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/infoCard"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent">-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="15dp"
+                android:background="#80FFFFFF" />
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:orientation="vertical"-->
-<!--            android:padding="20dp">-->
+            <TextView
+                android:id="@+id/txtBirthday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:text="@string/birthday"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:drawableStartCompat="@drawable/birthday" />
 
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Activity level"-->
-<!--                android:textColor="#FFFFFF"-->
-<!--                android:textSize="20sp"-->
-<!--                android:textStyle="bold" />-->
+        </LinearLayout>
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="18dp"-->
-<!--                android:gravity="center"-->
-<!--                android:orientation="horizontal">-->
+    </com.google.android.material.card.MaterialCardView>
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/imgSitting"-->
-<!--                    android:layout_width="60dp"-->
-<!--                    android:layout_height="60dp"-->
-<!--                    android:layout_margin="8dp"-->
-<!--                    android:background="@drawable/activity_circle"-->
-<!--                    android:padding="15dp"-->
-<!--                    android:src="@drawable/sitting" />-->
+    <!-- Activity Level Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/activityCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="#991B7999"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintTop_toBottomOf="@id/infoCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/imgWalk"-->
-<!--                    android:layout_width="60dp"-->
-<!--                    android:layout_height="60dp"-->
-<!--                    android:layout_margin="8dp"-->
-<!--                    android:background="@drawable/activity_circle"-->
-<!--                    android:padding="15dp"-->
-<!--                    android:src="@drawable/walk" />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/imgRun"-->
-<!--                    android:layout_width="60dp"-->
-<!--                    android:layout_height="60dp"-->
-<!--                    android:layout_margin="8dp"-->
-<!--                    android:background="@drawable/activity_circle"-->
-<!--                    android:padding="15dp"-->
-<!--                    android:src="@drawable/runner" />-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Activity level"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/imgExercise"-->
-<!--                    android:layout_width="60dp"-->
-<!--                    android:layout_height="60dp"-->
-<!--                    android:layout_margin="8dp"-->
-<!--                    android:background="@drawable/activity_circle"-->
-<!--                    android:padding="15dp"-->
-<!--                    android:src="@drawable/exercise" />-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-<!--            </LinearLayout>-->
+                <ImageView
+                    android:id="@+id/imgSitting"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/activity_circle"
+                    android:padding="15dp"
+                    android:src="@drawable/sitting" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/txtActivityTitle"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:text="Sedentary"-->
-<!--                android:textColor="#FFFFFF"-->
-<!--                android:textSize="18sp"-->
-<!--                android:textStyle="bold" />-->
+                <ImageView
+                    android:id="@+id/imgWalk"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/activity_circle"
+                    android:padding="15dp"
+                    android:src="@drawable/walk" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/txtActivityDesc"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:gravity="center"-->
-<!--                android:text="Typical daily activities"-->
-<!--                android:textColor="#D9FFFFFF"-->
-<!--                android:textSize="16sp" />-->
+                <ImageView
+                    android:id="@+id/imgRun"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/activity_circle"
+                    android:padding="15dp"
+                    android:src="@drawable/runner" />
 
-<!--        </LinearLayout>-->
+                <ImageView
+                    android:id="@+id/imgExercise"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/activity_circle"
+                    android:padding="15dp"
+                    android:src="@drawable/exercise" />
 
-<!--    </com.google.android.material.card.MaterialCardView>-->
+            </LinearLayout>
 
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:id="@+id/bottomNavigation"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="62dp"-->
-<!--        android:background="#001B29"-->
-<!--        app:itemIconTint="@null"-->
-<!--        app:itemTextColor="@android:color/transparent"-->
-<!--        app:labelVisibilityMode="unlabeled"-->
-<!--        app:menu="@menu/bottom_menu"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"/>-->
+            <TextView
+                android:id="@+id/txtActivityTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:text="Sedentary"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+            <TextView
+                android:id="@+id/txtActivityDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Typical daily activities"
+                android:textColor="#D9FFFFFF"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:background="#001B29"
+        app:itemIconSize="28dp"
+        app:itemIconTint="@color/bottom_nav_color"
+        app:itemTextColor="@color/bottom_nav_color"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/bottom_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/NoIndicatorBottomNav"
+        android:paddingBottom="0dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
