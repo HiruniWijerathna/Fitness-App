@@ -15,352 +15,154 @@
 
 ## 🌟 Project Overview
 
-**Fitness-App** is a modern Android fitness application designed to help users track daily physical activities, manage workout routines, monitor progress, and achieve their fitness goals.
+**Fitness-App** is a modern Android fitness tracking application designed to help users monitor daily physical activities, manage workout routines, and achieve fitness goals.
 
-The application provides a complete offline fitness experience, allowing users to monitor workouts, track calories, count steps, manage personal fitness data, and stay motivated through achievement-based rewards.
+The app provides a complete offline fitness experience including workout tracking, video-based exercises, progress monitoring, achievements, and personal profile management.
 
-### Architecture
+The system follows:
 
-- 📱 Native Android Development
-- 🎨 Material Design Components
-- 💾 Offline-First Data Storage
-- 🏃 Activity & Workout Tracking
-- 🎥 Video-Based Workout Guidance
-- 📊 Progress Monitoring System
+- 📱 Native Android Architecture (Kotlin + XML)
+- 🎨 Material Design UI
+- 💾 Offline-first Local Storage
+- 🏃 Workout & Activity Tracking
+- 🎥 Video-based Workout Guidance
 
 ---
 
-# 🌟 Key Features
+## 💪 Key Features
 
 ## 🏠 Home Dashboard
 
-![Calories](https://img.shields.io/badge/-Calories%20Tracking-red)
-![Steps](https://img.shields.io/badge/-Step%20Counter-green)
-![Workout](https://img.shields.io/badge/-Workout%20Time-blue)
-![Water](https://img.shields.io/badge/-Water%20Tracker-cyan)
-
-### Features
-
-- Personalized greeting
-- Daily calorie progress ring
-- Daily steps tracking ring
-- Workout duration tracking
+- Daily calorie tracking
+- Step counter progress rings
+- Workout time tracking
 - Water intake tracker
-- Fitness progress overview
+- Personalized greeting system
 
 ---
 
-## 💪 Workout Management
+## 💪 Workout Module
 
-![Workout](https://img.shields.io/badge/-Workout%20Programs-blue)
-![Search](https://img.shields.io/badge/-Real%20Time%20Search-purple)
-![Video](https://img.shields.io/badge/-Video%20Workouts-orange)
-
-### Workout Categories
-
-- Popular Workouts
-- Full Body Workouts
-- Arm Workouts
-- Leg Workouts
-- ABS Workouts
-- Yoga Sessions
-
-### Features
-
-- Browse workout programs
-- Search workouts instantly
-- View workout details
-- Track workout completion
-- Guided workout videos
-- Structured fitness challenges
-
----
-
-## 📋 Workout Detail Screen
-
-![Details](https://img.shields.io/badge/-Workout%20Details-green)
-![Checklist](https://img.shields.io/badge/-Checklist-orange)
-
-### Features
-
-- Dynamic workout information
-- Large hero workout image
-- Sub-workout checklist
-- Progress tracking
-- Start Challenge button
-- Workout breakdown view
+- Categorized workouts
+- Real-time search filter
+- Workout detail view
+- Checklist-based progress tracking
+- Start workout navigation
 
 ---
 
 ## 🎥 Video Workout Player
 
-![Player](https://img.shields.io/badge/-Video%20Player-blue)
-![Progress](https://img.shields.io/badge/-Progress%20Tracking-green)
-![Timer](https://img.shields.io/badge/-Workout%20Timer-orange)
-
-### Features
-
-- Android VideoView player
+- Built-in VideoView player
 - Play / Pause controls
-- Interactive seek bar
-- Real-time workout timer
-- Smooth playback tracking
-- Up Next workout recommendations
+- Seek bar progress tracking
+- Real-time timer update
+- “Up Next” workout preview
 
 ---
 
-## 🏆 Achievements & Progress
+## 🏆 Achievements System
 
-![Badge](https://img.shields.io/badge/-Achievement%20Badges-gold)
-![Goals](https://img.shields.io/badge/-Goal%20Tracking-green)
-
-### Achievement System
-
-- First Workout Badge
-- 10 Workouts Completed Badge
-- 30-Day Streak Badge
-- Goal Reached Badge
-- Personal Best Statistics
-- Activity Timeline
-
-### Progress Tracking
-
-- Total workouts completed
-- Workout duration statistics
-- Calories burned summary
-- Weekly performance highlights
+- Fitness badges:
+  - First Workout
+  - 10 Workouts
+  - 30 Day Streak
+  - Goal Reached
+- Personal best tracking
+- Activity timeline history
 
 ---
 
-## 👤 User Profile Management
+## 👤 Profile Management
 
-![Profile](https://img.shields.io/badge/-Profile%20Management-blue)
-![Photo](https://img.shields.io/badge/-Photo%20Upload-purple)
-
-### Profile Features
-
-- Edit Name
-- Edit Height
-- Edit Weight
-- Edit Birthday
-- Upload Profile Photo
-- Select Activity Level
-
-### Activity Levels
-
-- Sedentary
-- Lightly Active
-- Moderately Active
-- Active
-- Very Active
+- Edit personal details:
+  - Name
+  - Height
+  - Weight
+  - Birthday
+- Upload profile image
+- Activity level selection:
 
 ---
 
-# 💾 Local Data Management
-
-## SharedPreferences Storage
-
-The application uses Android SharedPreferences as a lightweight local database.
-
-### Stored Information
-
-- User Name
-- Height
-- Weight
-- Birthday
-- Activity Level
-- Profile Preferences
-- Profile Image Path
-
----
-
-## File Storage Management
-
-### Profile Image Handling
-
-- Image selection from gallery
-- Internal storage saving using `filesDir`
-- Persistent image access
-- Global image synchronization
-
-The profile image is automatically displayed across:
-
-- Home Screen
-- Workout Screen
-- Achievement Screen
-- Profile Screen
-
----
-
-# ⚙️ Backend Logic & Features
-
-## 🔍 Real-Time Search Filter
-
-Implemented using:
-
-- TextWatcher
-- Dynamic UI visibility updates
-- Instant workout filtering
-
-### Process
-
-1. User enters search text
-2. Workout titles are matched
-3. Matching cards remain visible
-4. Non-matching cards are hidden
-
----
-
-## 🎥 Asynchronous Media Tracking
-
-Implemented using:
-
-- Handler
-- Runnable
-
-### Features
-
-- Updates every 500ms
-- Real-time timer synchronization
-- Smooth progress bar movement
-- Video playback monitoring
-
----
-
-## 🔄 Intent-Based Routing
-
-Data is transferred between activities using Intent Extras.
-
-### Shared Data
-
-- Workout Titles
-- Workout Images
-- Video Resources
-- Workout Categories
-- Up Next Recommendations
-
----
-
-# 🎨 UI/UX Design
-
-## Glassmorphism Design
-
-- Dark theme
-- Floating translucent cards
-- Modern fitness interface
-- Material Design styling
-
-## Responsive Layouts
-
-- ConstraintLayout architecture
-- Mobile-friendly UI
-- Optimized rendering
-- Consistent navigation experience
-
----
-
-# 🛠️ Tech Stack
+## 🛠️ Tech Stack
 
 | Layer | Technology |
-|---------|------------|
+|------|------------|
 | Language | Kotlin |
-| Platform | Android |
-| UI | XML |
-| Layouts | ConstraintLayout |
-| Design | Material Design Components |
+| UI | XML (ConstraintLayout) |
+| Design | Material Design |
 | Storage | SharedPreferences |
-| File System | Internal Storage |
-| Media Playback | VideoView |
+| File System | Internal Storage (filesDir) |
+| Media Player | VideoView |
 | Navigation | BottomNavigationView |
 
 ---
 
-# 📂 Project Structure
+## 🧠 Architecture
+
+### Frontend
+- XML layouts
+- Material UI components
+- ConstraintLayout responsive design
+- Bottom navigation system
+
+### Backend (Local Logic)
+- SharedPreferences for data storage
+- File I/O for profile images
+- Intent-based navigation
+- Handler + Runnable for video progress
+- TextWatcher for search filtering
+
+---
+
+## 📂 Project Structure
 
 ```plaintext
-FITNESS_APP/
-├── app/
+Fitness-App/
 │
-├── java/
-│   ├── HomeActivity.kt
-│   ├── WorkoutActivity.kt
-│   ├── WorkoutDetailActivity.kt
-│   ├── StartWorkoutActivity.kt
-│   ├── AchievementActivity.kt
-│   └── ProfileActivity.kt
+├── HomeActivity
+├── WorkoutActivity
+├── WorkoutDetailActivity
+├── StartWorkoutActivity
+├── AchievementActivity
+├── ProfileActivity
 │
-├── res/
-│   ├── layout/
-│   ├── drawable/
-│   ├── mipmap/
-│   ├── values/
-│   └── menu/
-│
-├── SharedPreferences
-├── Internal Storage
-└── AndroidManifest.xml
+├── SharedPreferences (fitness_app_prefs)
+├── Internal Storage (profile images)
+└── Video Player Module
 ```
 
 ---
 
-# 🚀 Getting Started
+## 🚀 Getting Started
 
 ```bash
 # Clone repository
-git clone https://github.com/HiruniWijerathna/Fitness-App.git
+git clone https://github.com/HiruniWijerathna/Fitness-App
 
-# Open project in Android Studio
+# Open in Android Studio
 
 # Sync Gradle
 
-# Run application on Emulator or Physical Device
+# Run on emulator or physical device
 ```
 
 ---
 
-# 📱 Main Screens
+## 🔮 Future Enhancements
 
-- 🏠 Home Dashboard
-- 💪 Workout Hub
-- 📋 Workout Details
-- 🎥 Workout Player
-- 🏆 Achievements
-- 👤 User Profile
-
----
-
-# 🔮 Future Enhancements
-
-- Firebase Authentication
-- Cloud Data Synchronization
-- Google Fit Integration
-- Smart Calorie Prediction
-- AI Workout Recommendations
-- Push Notifications
-- Social Fitness Challenges
-- Fitness Analytics Dashboard
+- Firebase authentication
+- Cloud sync
+- Google Fit integration
+- AI workout recommendations
+- Smart calorie prediction
+- Push notifications
+- Social fitness challenges
 
 ---
 
-# 🎥 Demo
 
-### 📹 Project Demo Video
+## 📄 Conclusion
 
-Add your YouTube or Google Drive link here.
-
----
-
-# 📸 Screenshots
-
-```md
-![Home Screen](screenshots/home.png)
-![Workout Screen](screenshots/workout.png)
-![Achievement Screen](screenshots/achievement.png)
-![Profile Screen](screenshots/profile.png)
-```
-
----
-
-# 📄 Conclusion
-
-Fitness-App is a complete Android fitness management application that combines workout tracking, activity monitoring, achievement management, media playback, and profile customization into a single platform. Built using Kotlin and Android native technologies, the application provides a modern user experience while operating entirely offline through efficient local storage and state management.
+Fitness-App is a complete offline Android fitness application that combines workout tracking, activity monitoring, video-based training, achievements, and profile management into one system. It is built using Kotlin and follows a clean, modular architecture for scalability and performance.
