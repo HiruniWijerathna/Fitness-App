@@ -154,16 +154,22 @@ The system follows:
 
 ```plaintext
 FITNESS_APP/
-├─ HomeActivity
-├─ WorkoutActivity
-├─ WorkoutDetailActivity
-├─ StartWorkoutActivity
-├─ AchievementActivity
-├─ ProfileActivity
-│
-├─ SharedPreferences (fitness_app_prefs)
-├─ Internal Storage (images)
-└─ Video Player Module
+├── app/
+├── java/
+│   ├── HomeActivity.kt
+│   ├── WorkoutActivity.kt
+│   ├── WorkoutDetailActivity.kt
+│   ├── StartWorkoutActivity.kt
+│   ├── AchievementActivity.kt
+│   └── ProfileActivity.kt
+├── res/
+│   ├── layout/
+│   ├── drawable/
+│   ├── values/
+│   └── menu/
+├── SharedPreferences
+├── Internal Storage
+└── AndroidManifest.xml
 ```
 
 ---
@@ -204,16 +210,6 @@ https://www.figma.com/design/998YDDBCSn5W26vj7eETtx/Untitled?node-id=0-1&p=f&t=9
 
 ---
 
-## 📸 Screenshots
-
-```md
-![Home Screen](screenshots/home.png)
-![Workout Screen](screenshots/workout.png)
-![Achievement Screen](screenshots/achievement.png)
-![Profile Screen](screenshots/profile.png)
-```
-
----
 
 ## 📄 Conclusion
 
