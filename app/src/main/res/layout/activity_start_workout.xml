@@ -7,182 +7,216 @@
     android:layout_height="match_parent"
     android:background="#001B29">
 
-    <!-- Full Screen Exercise Image -->
-    <ImageView
-        android:id="@+id/exerciseImage"
+    <!-- Top Video Area -->
+    <VideoView
+        android:id="@+id/videoFrame"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:contentDescription="Exercise"
-        android:scaleType="centerCrop"
-        android:src="@drawable/background2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.6" />
 
-    <!-- Gradient overlay -->
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/bottom_gradient"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Back Button -->
+    <!-- Back Arrow -->
     <TextView
         android:id="@+id/btnBackStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="‹"
-        android:textColor="#FFFFFF"
-        android:textSize="36sp"
-        android:padding="12dp"
+        android:text="◀"
+        android:textColor="#15BDD7"
+        android:textSize="24sp"
+        android:padding="16dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp" />
+        android:layout_marginTop="32dp" />
 
-    <!-- Bottom Player Card -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/playerCard"
+    <!-- Seek Bar Block -->
+    <LinearLayout
+        android:id="@+id/seekBarBlock"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="0dp"
-        app:cardCornerRadius="0dp"
-        app:cardBackgroundColor="#CC001B29"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#2E8696"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintTop_toBottomOf="@id/videoFrame"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnPlayPause"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="#FFFFFF">
+            <TextView
+                android:id="@+id/playPauseIcon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="▶"
+                android:textColor="#2E8696"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:paddingStart="3dp"/>
+        </androidx.cardview.widget.CardView>
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:progress="30"
+            android:max="100"
+            android:progressTint="#15BDD7"
+            android:progressBackgroundTint="#FFFFFF"
+            android:thumbTint="#15BDD7" />
+
+        <TextView
+            android:id="@+id/timerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15:05"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- Up Next Section -->
+    <LinearLayout
+        android:id="@+id/upNextSection"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/seekBarBlock"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="16dp">
+
+        <!-- Week 1 Header -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:paddingHorizontal="24dp"
-            android:paddingTop="20dp"
-            android:paddingBottom="36dp">
-
-            <!-- Exercise Name -->
+            android:paddingBottom="12dp"
+            android:gravity="center_vertical">
+            
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Week 1"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+                
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lateral Raises"
-                android:textColor="#FFFFFF"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <!-- Reps & Sets Info -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="12 reps • 3 sets"
-                    android:textColor="#CCFFFFFF"
-                    android:textSize="15sp" />
-
-                <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2/4"
-                    android:textColor="#15BDD7"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <!-- Progress bar -->
-            <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:layout_width="match_parent"
-                android:layout_height="6dp"
-                android:layout_marginTop="14dp"
-                app:indicatorColor="#15BDD7"
-                app:trackColor="#3315BDD7"
-                app:trackCornerRadius="3dp"
-                android:progress="50" />
-
-            <!-- Music player row -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
-                android:gravity="center_vertical">
-
-                <!-- Prev -->
-                <TextView
-                    android:id="@+id/btnPrev"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="⏮"
-                    android:textSize="24sp"
-                    android:textColor="#CCFFFFFF"
-                    android:padding="8dp"/>
-
-                <!-- Play / Pause -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/btnPlayPause"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginHorizontal="16dp"
-                    app:cardCornerRadius="30dp"
-                    app:cardBackgroundColor="#15BDD7">
-                    <TextView
-                        android:id="@+id/playPauseIcon"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="⏸"
-                        android:textSize="22sp"
-                        android:gravity="center"
-                        android:textColor="#FFFFFF" />
-                </androidx.cardview.widget.CardView>
-
-                <!-- Next -->
-                <TextView
-                    android:id="@+id/btnNext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="⏭"
-                    android:textSize="24sp"
-                    android:textColor="#CCFFFFFF"
-                    android:padding="8dp"/>
-
-                <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
-
-                <!-- Timer -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center">
-                    <TextView
-                        android:id="@+id/timerText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="01:30"
-                        android:textColor="#FFFFFF"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="remaining"
-                        android:textColor="#CCFFFFFF"
-                        android:textSize="11sp" />
-                </LinearLayout>
-
-            </LinearLayout>
-
+                android:text="▲"
+                android:textColor="#15BDD7"
+                android:textSize="16sp" />
         </LinearLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+        <!-- Up Next Item -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#3315BDD7">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:gravity="center_vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    app:cardCornerRadius="8dp">
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/upNextImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/startpagegirl"
+                            android:scaleType="centerCrop"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#44000000" />
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            app:cardCornerRadius="14dp"
+                            app:cardBackgroundColor="#FFFFFF"
+                            android:layout_gravity="center">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="▶"
+                                android:textColor="#1B7999"
+                                android:textSize="14sp"
+                                android:gravity="center"
+                                android:paddingStart="2dp"/>
+                        </androidx.cardview.widget.CardView>
+                    </FrameLayout>
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:paddingStart="16dp">
+                    
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                        <TextView android:text="Day 1" android:textColor="#FFFFFF" android:textSize="12sp"
+                            android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"/>
+                        <TextView android:text="25 mint" android:textColor="#FFFFFF" android:textSize="12sp"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    
+                    <TextView android:id="@+id/upNextTitle" android:text="Full Body" android:textColor="#FFFFFF" android:textSize="16sp"
+                        android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp"/>
+                        
+                    <TextView android:id="@+id/upNextDesc" android:text="3 step | 20 Exercises" android:textColor="#FFFFFF"
+                        android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp"/>
+                    <TextView android:text="30-40 secs on | 5-10 secs off" android:textColor="#FFFFFF"
+                        android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:buttonTint="#15BDD7"
+                    android:layout_marginStart="8dp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:background="#001B29"
+        app:itemIconSize="28dp"
+        app:itemIconTint="@color/bottom_nav_color"
+        app:itemTextColor="@color/bottom_nav_color"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/bottom_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/NoIndicatorBottomNav"
+        android:paddingBottom="0dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

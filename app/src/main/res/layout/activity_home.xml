@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingStart="30dp"
-                android:paddingEnd="30dp"
+                android:paddingEnd="32dp"
                 android:paddingTop="48dp"
                 android:gravity="center_vertical">
 
@@ -67,8 +67,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/homeProfileImageCard"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     app:cardCornerRadius="24dp"
                     app:cardElevation="4dp">
 
