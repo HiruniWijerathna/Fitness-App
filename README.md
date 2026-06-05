@@ -195,7 +195,7 @@ git clone https://github.com/HiruniWijerathna/Fitness-App
 👉 [Fitness App figma design](https://www.figma.com/design/998YDDBCSn5W26vj7eETtx/Untitled?node-id=0-1&p=f&t=9h6T1qVgnaceVqL9-0)
 
 **🎥 Project Demo Video:**
-👉 [Fitness App Video](https://drive.google.com/file/d/1SCr2HTGoqke32yvdEn9TyoppSwoAOMqk/view?usp=sharing)
+👉 [Fitness App Video](https://drive.google.com/file/d/10Z6B6H_hxF8lL15vHoEkAjEEZ2eVqVTk/view?usp=sharing)
 
 ---
 
