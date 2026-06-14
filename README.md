@@ -1,4 +1,4 @@
-# 🏋️ Fitness-App – Android Fitness Tracking System
+# 🏋️ Fitness App – Android Fitness Tracking System
 
 <p align="center">
   <img src="banner.png" alt="Fitness App Banner" width="100%" />
